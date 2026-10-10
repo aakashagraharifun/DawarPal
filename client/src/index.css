@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cinzel", Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-vault-950: #0a0910;
+  --color-vault-900: #12101b;
+  --color-vault-850: #181524;
+  --color-vault-800: #1f1b2e;
+  --color-vault-700: #2c2642;
+  --color-vault-600: #3d3559;
+
+  --color-parchment-50: #f7f1e3;
+  --color-parchment-200: #ddd3bd;
+  --color-mist-300: #aaa3c2;
+  --color-mist-500: #77708f;
+
+  --color-gold-300: #f5d48a;
+  --color-gold-400: #e8c170;
+  --color-gold-500: #d4a64a;
+  --color-gold-700: #8a6a2a;
+
+  --color-ember-400: #f0845f;
+  --color-ember-500: #e2603b;
+  --color-jade-400: #5fd3a8;
+  --color-jade-500: #3bb88c;
+}
+
+/* Plain CSS below uses literal colors: Tailwind may drop theme variables that no utility uses. */
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to { background-position: 200% 0; }
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  @apply bg-vault-950 font-sans text-parchment-50 antialiased;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgb(212 166 74 / 0.12), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgb(61 53 89 / 0.35), transparent 70%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: rgb(212 166 74 / 0.35);
+}
+
+/* Thin, dark scrollbars for the chat log. */
+.scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #3d3559 transparent;
+}
+
+.text-gilded {
+  background: linear-gradient(100deg, #d4a64a, #f5d48a 40%, #d4a64a 60%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .text-gilded {
+    animation: shimmer 3s linear infinite;
+  }
+}
